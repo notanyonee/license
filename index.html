@@ -3,85 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selamat Ulang Tahun!</title>
+  <title>Pilih Foto Favoritmu!</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #ffe0ec, #e0f7ff);
+      background: #fef3f7;
       margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .card {
-      background: white;
       padding: 2rem;
-      border-radius: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      max-width: 400px;
       text-align: center;
-      animation: fadeIn 1s ease-in-out;
     }
-    .card h1 {
-      font-size: 2rem;
-      color: #ff5c8d;
-      margin-bottom: 1rem;
+    .input-container {
+      margin-top: 2rem;
     }
-    .card p {
-      font-size: 1.1rem;
-      color: #444;
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      width: 200px;
     }
-    .heart {
-      font-size: 2rem;
-      color: #ff5c8d;
-      animation: pulse 1.2s infinite;
-    }
-    .button {
-      margin-top: 1.5rem;
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
       background-color: #ff5c8d;
       color: white;
-      padding: 0.75rem 1.5rem;
       border: none;
-      border-radius: 1rem;
-      font-size: 1rem;
+      border-radius: 0.5rem;
       cursor: pointer;
-      transition: background-color 0.3s;
+      margin-left: 1rem;
     }
-    .button:hover {
-      background-color: #e14c7b;
-    }
-    #message {
-      margin-top: 1rem;
-      font-style: italic;
-      color: #333;
+    .gallery {
       display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 1rem;
+      margin: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .welcome {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="heart">❤️</div>
-    <h1>Selamat Ulang Tahun!</h1>
-    <p>Semoga harimu dipenuhi dengan kebahagiaan, tawa, dan cinta. Kamu orang yang spesial dan pantas dapetin yang terbaik. 🎉</p>
-    <button class="button" onclick="showMessage()">Klik di sini 💌</button>
-    <div id="message">Aku mungkin gak berani ngomong langsung... tapi aku selalu berharap kamu bahagia, dari jauh :)</div>
+  <h1>Halo! 😄</h1>
+  <p>Masukkan namamu dulu ya sebelum pilih foto favoritmu!</p>
+
+  <div class="input-container">
+    <input type="text" id="username" placeholder="Namamu...">
+    <button onclick="showGallery()">Lanjut</button>
+  </div>
+
+  <div class="welcome" id="welcomeMessage"></div>
+
+  <div class="gallery" id="gallery">
+    <img src="https://picsum.photos/id/1011/400/300" alt="foto 1">
+    <img src="https://picsum.photos/id/1015/400/300" alt="foto 2">
+    <img src="https://picsum.photos/id/1025/400/300" alt="foto 3">
+    <img src="https://picsum.photos/id/1035/400/300" alt="foto 4">
   </div>
 
   <script>
-    function showMessage() {
-      const msg = document.getElementById('message');
-      msg.style.display = 'block';
+    function showGallery() {
+      const name = document.getElementById('username').value;
+      const welcome = document.getElementById('welcomeMessage');
+      const gallery = document.getElementById('gallery');
+
+      if (name.trim() !== "") {
+        welcome.textContent = `Hai ${name}! Pilih salah satu foto keren ini:`;
+        welcome.style.display = 'block';
+        gallery.style.display = 'flex';
+      } else {
+        alert("Masukin dulu namanya dong!");
+      }
     }
   </script>
 </body>

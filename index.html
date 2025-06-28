@@ -3,92 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pilih Foto Favoritmu!</title>
+  <title>Kuis Lucu Buat Kamu 😜</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fef3f7;
-      margin: 0;
-      padding: 2rem;
+      background-color: #fff4fa;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
     }
-    .input-container {
-      margin-top: 2rem;
+    h1 {
+      font-size: 2rem;
+      color: #d63384;
     }
-    input[type="text"] {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-      width: 200px;
+    .btn-container {
+      margin-top: 2rem;
     }
     button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      background-color: #ff5c8d;
-      color: white;
+      background-color: #ff69b4;
       border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      margin-left: 1rem;
-    }
-    .gallery {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .gallery img {
-      width: 200px;
-      height: auto;
-      border-radius: 1rem;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
       margin: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 1rem;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: 0.3s ease;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
+    button:hover {
+      transform: scale(1.1);
     }
-    .welcome {
+    #result {
       font-size: 1.5rem;
-      margin-top: 1rem;
-      display: none;
+      margin-top: 2rem;
+      color: #ff1493;
     }
   </style>
 </head>
 <body>
-  <h1>Halo! 😄</h1>
-  <p>Masukkan namamu dulu ya sebelum pilih foto favoritmu!</p>
+  <h1>Ada pertanyaan penting buat kamu 😏</h1>
+  <p>Kamu suka kejutan nggak?</p>
 
-  <div class="input-container">
-    <input type="text" id="username" placeholder="Namamu...">
-    <button onclick="showGallery()">Lanjut</button>
+  <div class="btn-container">
+    <button onclick="showJoke()">Iya</button>
+    <button onclick="showJoke()">Banget!</button>
   </div>
 
-  <div class="welcome" id="welcomeMessage"></div>
-
-  <div class="gallery" id="gallery">
-    <img src="https://picsum.photos/id/1011/400/300" alt="foto 1">
-    <img src="https://picsum.photos/id/1015/400/300" alt="foto 2">
-    <img src="https://picsum.photos/id/1025/400/300" alt="foto 3">
-    <img src="https://picsum.photos/id/1035/400/300" alt="foto 4">
-  </div>
+  <div id="result"></div>
 
   <script>
-    function showGallery() {
-      const name = document.getElementById('username').value;
-      const welcome = document.getElementById('welcomeMessage');
-      const gallery = document.getElementById('gallery');
-
-      if (name.trim() !== "") {
-        welcome.textContent = `Hai ${name}! Pilih salah satu foto keren ini:`;
-        welcome.style.display = 'block';
-        gallery.style.display = 'flex';
-      } else {
-        alert("Masukin dulu namanya dong!");
-      }
+    function showJoke() {
+      const punchlines = [
+        "Langit emang indah, tapi kamu lebih 😎",
+        "Kucing aja ngeong, masa kamu nggak sayang~ 😽",
+        "Aku udah vaksin, tapi masih nggak kebal dari kamu 😳",
+        "Kopi aja bisa bikin melek, kamu bikin deg-degan 😭❤️"
+      ];
+      const result = document.getElementById('result');
+      const random = Math.floor(Math.random() * punchlines.length);
+      result.textContent = punchlines[random];
     }
   </script>
 </body>
 </html>
+
